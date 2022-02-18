@@ -258,6 +258,53 @@ export const SplitStrings = () => {
   );
 };
 
+export const TheHashtagGenerator = () => {
+  const code = `function generateHashtag (str) {
+  if (str === "" || str.replace(/\s/g,'') === ''){
+    return false
+  }else{
+    const hash = "#" + str.split(" ").map(x => x.charAt(0).toUpperCase() + x.slice(1)).join('');
+    if (hash.length > 140){
+      return false
+    }else{
+      return hash
+    }
+  } 
+}`;
+  return (
+    <>
+      <h2 className="title">The Hashtag Generator</h2>
+      <div className="description">
+        <h3>Description:</h3>
+        The marketing team is spending way too much time typing in hashtags.
+        <br />
+        Let's help them with our own Hashtag Generator!
+        <br />
+        Here's the deal:
+        <br />
+        It must start with a hashtag (#).
+        <br />
+        All words must have their first letter capitalized.
+        <br />
+        If the final result is longer than 140 chars it must return false.
+        <br />
+        If the input or the result is an empty string it must return false.
+        <br />
+        Examples
+        <br />" Hello there thanks for trying my Kata" ={`>`}{" "}
+        "#HelloThereThanksForTryingMyKata"
+        <br />" Hello World " ={`>`} "#HelloWorld"
+        <br />
+        "" ={`>`} false
+      </div>
+      <h3>JavaScript</h3>
+      <SyntaxHighlighter language={"javascript"} style={darcula}>
+        {code}
+      </SyntaxHighlighter>
+    </>
+  );
+};
+
 const Kata1 = () => {
   return (
     <>
@@ -267,6 +314,7 @@ const Kata1 = () => {
       <CompleteFibonacciSeries />
       <SumStringsasNumbers />
       <SplitStrings />
+      <TheHashtagGenerator />
     </>
   );
 };

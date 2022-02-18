@@ -16,7 +16,7 @@ export const StringIncrementer = () => {
 }`;
   return (
     <>
-      <h2 className="title">String incrementer</h2>
+      <h2 className="title">String Incrementer</h2>
       <div className="description">
         <h3>Description:</h3>
         Your job is to write a function which increments a string, to create a
@@ -39,6 +39,7 @@ export const StringIncrementer = () => {
         Attention: If the number has leading zeros the amount of digits should
         be considered.
       </div>
+      <h3>JavaScript</h3>
       <SyntaxHighlighter language={"javascript"} style={darcula}>
         {code}
       </SyntaxHighlighter>
@@ -73,6 +74,7 @@ export const SimplePigLatin = () => {
           pigIt('Hello world !'); // elloHay orldway !
         </div>
       </div>
+      <h3>JavaScript</h3>
       <SyntaxHighlighter language={"javascript"} style={darcula}>
         {code}
       </SyntaxHighlighter>
@@ -113,8 +115,64 @@ export const RGBToHexConversion = () => {
         <br />
         rgb(148, 0, 211) // returns 9400D3
       </div>
+      <h3>JavaScript</h3>
       <SyntaxHighlighter language={"javascript"} style={darcula}>
         {code}
+      </SyntaxHighlighter>
+    </>
+  );
+};
+
+export const CompleteFibonacciSeries = () => {
+  const javascriptCode = `function fibonacci(n) {
+    const values = [0, 1]
+    if (n < 1){
+      return []
+    } else if (n === 1){
+      return [0]
+    }else{
+    for (let i = 0; i < n - 2; ++i) {
+      values.push(values[values.length - 1] + values[values.length - 2]);
+      }
+    return values;
+    }
+}`;
+  const rubyCode = `def fibonacci(n)
+  values = [0, 1]
+  if n < 1
+    []
+  elsif n == 1
+    [0]
+  else
+    (n - 2).times do
+      values << values[-1] + values[-2]
+    end
+  values
+  end
+end`;
+  return (
+    <>
+      <h2 className="title">Complete Fibonacci Series</h2>
+      <div className="description">
+        <h3>Description:</h3>
+        The function 'fibonacci' should return an array of fibonacci numbers.
+        The function takes a number as an argument to decide how many no. of
+        elements to produce. If the argument is less than or equal to 0 then
+        return empty array
+        <br />
+        Example:
+        <br />
+        fibonacci(4) // should return [0,1,1,2]
+        <br />
+        fibonacci(-1) // should return []
+      </div>
+      <h3>JavaScript</h3>
+      <SyntaxHighlighter language={"javascript"} style={darcula}>
+        {javascriptCode}
+      </SyntaxHighlighter>
+      <h3>Ruby</h3>
+      <SyntaxHighlighter language={"ruby"} style={darcula}>
+        {rubyCode}
       </SyntaxHighlighter>
     </>
   );
@@ -126,6 +184,7 @@ const Kata1 = () => {
       <StringIncrementer />
       <SimplePigLatin />
       <RGBToHexConversion />
+      <CompleteFibonacciSeries />
     </>
   );
 };

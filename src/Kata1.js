@@ -205,9 +205,50 @@ function sumStrings(a, b) {
         <br />
         For example:
         <br />
-        sumStrings('1','2') // => '3'
+        sumStrings('1','2') // ={`>`} '3'
         <br />A string representation of an integer will contain no characters
         besides the ten numerals "0" to "9".
+      </div>
+      <h3>JavaScript</h3>
+      <SyntaxHighlighter language={"javascript"} style={darcula}>
+        {code}
+      </SyntaxHighlighter>
+    </>
+  );
+};
+
+export const SplitStrings = () => {
+  const code = `function solution(str){
+  if(str.length > 0){
+    const arr = str.match(/.{1,2}/g)
+    const last = arr.slice(-1)
+    if(last.join('').length === 1){
+      last.push('_')
+      arr.pop()
+      arr.push(last.join(''))
+      return arr
+    }else{
+      return arr
+    }
+  }else{
+    return []
+  }
+}`;
+  return (
+    <>
+      <h2 className="title">Split Strings</h2>
+      <div className="description">
+        <h3>Description:</h3>
+        Complete the solution so that it splits the string into pairs of two
+        characters. If the string contains an odd number of characters then it
+        should replace the missing second character of the final pair with an
+        underscore ('_').
+        <br />
+        Examples:
+        <br />
+        solution('abc') // should return ['ab', 'c_']
+        <br />
+        solution('abcdef') // should return ['ab', 'cd', 'ef']
       </div>
       <h3>JavaScript</h3>
       <SyntaxHighlighter language={"javascript"} style={darcula}>
@@ -225,6 +266,7 @@ const Kata1 = () => {
       <RGBToHexConversion />
       <CompleteFibonacciSeries />
       <SumStringsasNumbers />
+      <SplitStrings />
     </>
   );
 };

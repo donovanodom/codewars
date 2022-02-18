@@ -80,12 +80,53 @@ export const SimplePigLatin = () => {
   );
 };
 
-const KataA = () => {
+export const RGBToHexConversion = () => {
+  const code = `function toHex(x) {
+    const hex = x.toString(16);
+    return hex.length == 1 ? "0" + hex : hex < 0 ? "00" : x > 255 ? "FF" : hex;
+  }
+  
+  function rgb(r, g, b){
+    let hex = toHex(r) + toHex(g) + toHex(b)
+    return hex.toUpperCase()
+}`;
+  return (
+    <>
+      <h2 className="title">RGB to Hex Conversion</h2>
+      <div className="description">
+        <h3>Description:</h3>
+        The rgb function is incomplete. Complete it so that passing in RGB
+        decimal values will result in a hexadecimal representation being
+        returned. Valid decimal values for RGB are 0 - 255. Any values that fall
+        out of that range must be rounded to the closest valid value.
+        <br />
+        Note: Your answer should always be 6 characters long, the shorthand with
+        3 will not work here.
+        <br />
+        The following are examples of expected output values:
+        <br />
+        rgb(255, 255, 255) // returns FFFFFF
+        <br />
+        rgb(255, 255, 300) // returns FFFFFF
+        <br />
+        rgb(0,0,0) // returns 000000
+        <br />
+        rgb(148, 0, 211) // returns 9400D3
+      </div>
+      <SyntaxHighlighter language={"javascript"} style={darcula}>
+        {code}
+      </SyntaxHighlighter>
+    </>
+  );
+};
+
+const Kata1 = () => {
   return (
     <>
       <StringIncrementer />
       <SimplePigLatin />
+      <RGBToHexConversion />
     </>
   );
 };
-export default KataA;
+export default Kata1;

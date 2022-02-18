@@ -3,16 +3,16 @@ import { darcula } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export const StringIncrementer = () => {
   const code = `function incrementString (str) {
-    if(isNaN(str.slice(-1)) && str){
-      return str + 1
-    }else if(!str){
-      return '1'
-    }else{
-      let char = str.replace(/[0-9]/g, '') 
-      let num = str.replace(/\D/g, '')
-      let incNum = parseInt(num, 10) + 1
-      return char + incNum.toString().padStart(num.length, '0')
-    }
+  if(isNaN(str.slice(-1)) && str){
+    return str + 1
+  }else if(!str){
+    return '1'
+  }else{
+    let char = str.replace(/[0-9]/g, '') 
+    let num = str.replace(/\D/g, '')
+    let incNum = parseInt(num, 10) + 1
+    return char + incNum.toString().padStart(num.length, '0')
+  }
 }`;
   return (
     <>
@@ -49,14 +49,14 @@ export const StringIncrementer = () => {
 
 export const SimplePigLatin = () => {
   const code = `function pigIt(str){
-    const wordSplice = (wrd) => {
-      if(/^[a-zA-Z]+$/.test(wrd)){ 
-       return wrd.substr(1, wrd.length) + wrd.charAt(0) + 'ay'
-      }else{
-        return wrd
-      }  
-    }
-    return str.split(' ').map((x) => wordSplice(x)).join(' ')
+  const wordSplice = (wrd) => {
+    if(/^[a-zA-Z]+$/.test(wrd)){ 
+      return wrd.substr(1, wrd.length) + wrd.charAt(0) + 'ay'
+    }else{
+      return wrd
+    }  
+  }
+  return str.split(' ').map((x) => wordSplice(x)).join(' ')
 }`;
   return (
     <>
@@ -84,13 +84,13 @@ export const SimplePigLatin = () => {
 
 export const RGBToHexConversion = () => {
   const code = `function toHex(x) {
-    const hex = x.toString(16);
-    return hex.length == 1 ? "0" + hex : hex < 0 ? "00" : x > 255 ? "FF" : hex;
-  }
+  const hex = x.toString(16);
+  return hex.length == 1 ? "0" + hex : hex < 0 ? "00" : x > 255 ? "FF" : hex;
+}
   
-  function rgb(r, g, b){
-    let hex = toHex(r) + toHex(g) + toHex(b)
-    return hex.toUpperCase()
+function rgb(r, g, b){
+  let hex = toHex(r) + toHex(g) + toHex(b)
+  return hex.toUpperCase()
 }`;
   return (
     <>
@@ -125,17 +125,17 @@ export const RGBToHexConversion = () => {
 
 export const CompleteFibonacciSeries = () => {
   const javascriptCode = `function fibonacci(n) {
-    const values = [0, 1]
-    if (n < 1){
-      return []
-    } else if (n === 1){
-      return [0]
-    }else{
-    for (let i = 0; i < n - 2; ++i) {
-      values.push(values[values.length - 1] + values[values.length - 2]);
-      }
-    return values;
+  const values = [0, 1]
+  if (n < 1){
+    return []
+  } else if (n === 1){
+    return [0]
+  }else{
+  for (let i = 0; i < n - 2; ++i) {
+    values.push(values[values.length - 1] + values[values.length - 2]);
     }
+  return values;
+  }
 }`;
   const rubyCode = `def fibonacci(n)
   values = [0, 1]
@@ -178,6 +178,45 @@ end`;
   );
 };
 
+export const SumStringsasNumbers = () => {
+  const code = `"use strict";
+const reverseArr = s => s.split("").reverse();
+  
+function sumStrings(a, b) {
+  [a, b] = [reverseArr(a), reverseArr(b)];
+  let carry = 0;
+  const arr = []
+  const [mx, mn] = (a.length >= b.length) ? [a, b] : [b, a];
+  mx.forEach((itm, idx) => {
+    let sm = Number(itm) + (Number(mn[idx]) || 0) + carry;
+    [sm, carry] = sm > 9 ? [sm%10, 1] : [sm, 0];
+    arr.unshift(sm)
+  })
+  if (carry) arr.unshift(carry);
+  return arr.join("").replace(/^(0+)/, "");
+}`;
+  return (
+    <>
+      <h2 className="title">Sum Strings as Numbers</h2>
+      <div className="description">
+        <h3>Description:</h3>
+        Given the string representations of two integers, return the string
+        representation of the sum of those integers.
+        <br />
+        For example:
+        <br />
+        sumStrings('1','2') // => '3'
+        <br />A string representation of an integer will contain no characters
+        besides the ten numerals "0" to "9".
+      </div>
+      <h3>JavaScript</h3>
+      <SyntaxHighlighter language={"javascript"} style={darcula}>
+        {code}
+      </SyntaxHighlighter>
+    </>
+  );
+};
+
 const Kata1 = () => {
   return (
     <>
@@ -185,6 +224,7 @@ const Kata1 = () => {
       <SimplePigLatin />
       <RGBToHexConversion />
       <CompleteFibonacciSeries />
+      <SumStringsasNumbers />
     </>
   );
 };

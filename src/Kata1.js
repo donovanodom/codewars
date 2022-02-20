@@ -401,9 +401,9 @@ export const FindTheDivisors = () => {
       <h2 className="title">Find the Divisors!</h2>
       <div className="description">
         <h3>Description:</h3>
-        Create a function named divisors/Divisors that takes an integer n > 1
-        and returns an array with all of the integer's divisors(except for 1 and
-        the number itself), from smallest to largest. If the number is prime
+        Create a function named divisors/Divisors that takes an integer n {`>`}{" "}
+        1 and returns an array with all of the integer's divisors(except for 1
+        and the number itself), from smallest to largest. If the number is prime
         return the string '(integer) is prime'.
         <br />
         Example:

@@ -186,6 +186,56 @@ end`;
   );
 };
 
+export const WhoLikesIt = () => {
+  const code = `def likes(names)
+  if names.length == 0
+    "no one likes this"
+  elsif names.length == 1
+    "#{names.first} likes this"
+  elsif names.length == 2
+    "#{names.insert(1,"and").join(" ")} like this"
+  elsif names.length == 3
+    last = names.pop
+    second_to_last = names.pop
+    "#{names.map { |x| x.concat(",") }.push(second_to_last).push(last).insert(-2,"and").join(" ")} like this"
+    else
+    names[0] + ", " + names[1] + " and #{names.length-2} others like this"
+  end
+end`;
+  return (
+    <>
+      <h2 className="title">Who likes it?</h2>
+      <div className="description">
+        You probably know the "like" system from Facebook and other pages.
+        People can "like" blog posts, pictures or other items. We want to create
+        the text that should be displayed next to such an item.
+        <br />
+        Implement the function which takes an array containing the names of
+        people that like an item. It must return the display text as shown in
+        the examples:
+        <br />
+        [] --{">"} "no one likes this"
+        <br />
+        ["Peter"] --{">"} "Peter likes this"
+        <br />
+        ["Jacob", "Alex"] --{">"} "Jacob and Alex like this"
+        <br />
+        ["Max", "John", "Mark"] --{">"} "Max, John and Mark like this"
+        <br />
+        ["Alex", "Jacob", "Mark", "Max"] --{">"} "Alex, Jacob and 2 others like
+        this"
+        <br />
+        Note: For 4 or more names, the number in "and 2 others" simply
+        increases.
+      </div>
+      <h3>Ruby</h3>
+      <SyntaxHighlighter language={"ruby"} style={darcula}>
+        {code}
+      </SyntaxHighlighter>
+    </>
+  );
+};
+
 const Kata2 = () => {
   return (
     <>
@@ -193,6 +243,7 @@ const Kata2 = () => {
       <TwoToOne />
       <WriteNumberInExpandedForm />
       <EqualSidesOfAnArray />
+      <WhoLikesIt />
     </>
   );
 };
